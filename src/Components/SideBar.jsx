@@ -1,36 +1,27 @@
-import React, { useState } from 'react'
-import {Link} from "react-router-dom"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faHouse,faBolt,faClockRotateLeft,faUser} from "@fortawesome/free-solid-svg-icons"
-import {faSquareYoutube} from "@fortawesome/free-brands-svg-icons"
-import SidebarTab from './SidebarTab'
+import { useState } from 'react'
 
+import SidebarTab from './SidebarTab'
+import SignIn from './SignIn'
+import { ExploreData, SidebarData } from '../utils/Constants'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 const SideBar = () => {
   const[isActive,setIsActive]=useState('Home')
   const handleClick=(tab)=>{
     setIsActive(tab)
   }
   return (
-    <div className='w-62 px-2 '>
-        <ul className=''>
-          <SidebarTab isActive={isActive}onClick={()=>handleClick('Home')} icon={faHouse} tabName={'Home'}/>
-          <SidebarTab isActive={isActive}onClick={()=>handleClick('Shorts')} icon={faBolt} tabName={'Shorts'}/>
-          <SidebarTab isActive={isActive}onClick={()=>handleClick('Shorts')} icon={faSquareYoutube} tabName={'Subscriptions'}/>
-          <SidebarTab isActive={isActive}onClick={()=>handleClick('Shorts')} icon={faClockRotateLeft} tabName={'History'}/>
-          <SidebarTab isActive={isActive}onClick={()=>handleClick('Shorts')} icon={faUser} tabName={'You'}/>
+    <div className='lg:w-62 px-2 '>
+        <ul className='lg:w-full'>
+          {SidebarData.map(side=><SidebarTab key={side.tabName} icon={side.icon} tabName={side.tabName} onClick={()=>handleClick(side.tabName)} isActive={isActive} />)}
+        
+        </ul>
+        <div className='px-5 py-3 space-y-4 border-t-1 hidden lg:inline-block  border-black/50'>
+          <p>Sign in to like videos, comment, and subscribe.</p>
+          <SignIn icon={faUser}/>
          
-           
-            <li>Shorts</li>
-            <li>Subscriptions</li>
-            <li>You</li>
-            <li>History</li>
-            <li>Playlist</li>
-            <li>Your Videos</li>
-            <li>Watch Later</li>
-            <li>Liked Videos</li>
-            <li>Subscriptions</li>
-            <li>T series</li>
-            <li>Sony Music India</li>
+        </div>
+        <ul className='border-t-1 border-black/50'>
+          {ExploreData.map(exp=><SidebarTab key={exp.tabName} icon={exp.icon} tabName={exp.tabName} onClick={()=>handleClick(exp.tabName)}/> )}
         </ul>
     </div>
   )

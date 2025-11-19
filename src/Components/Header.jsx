@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { faBars, faSearch, faPlus, faBell, faMicrophone, faUser } from "@fortawesome/free-solid-svg-icons"
 import FontIcon from './FontIcon'
+import SignIn from './SignIn'
 
 const Header = () => {
   return (
@@ -26,7 +27,7 @@ const Header = () => {
       <div className='flex gap-4 justify-end items-center sm:col-span-4   md:col-span-3 col-span-4'>
         <FontIcon icon={faPlus} children={'create'}/>
         <FontIcon icon={faBell} className={' text-xl'} />
-        <FontIcon className=" rounded-full text-xl" icon={faUser}/>
+        <SignIn icon={faUser}/>
       </div>
     </div>
   )
