@@ -1,5 +1,6 @@
 import { faUser, faBolt, faClockRotateLeft, faHouse,faShoppingBag,faMusic,faGamepad,faHeadset,faClapperboard,faNewspaper,faFaceSmileBeam, faGraduationCap, } from "@fortawesome/free-solid-svg-icons"
 import { faSquareYoutube } from "@fortawesome/free-brands-svg-icons"
+
 export const SidebarData = [
     {
         icon: faHouse,
@@ -30,6 +31,10 @@ export const ExploreData=[
     {
         icon: faMusic,
         tabName: 'Music',
+    },
+    {
+        icon:faClapperboard,
+        tabName:'Movies'
     },
     {
         icon: faGamepad,
@@ -97,3 +102,4 @@ export const ButtonData=[
     },
     
 ]
+export const Youtube_api=`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=IN&key=${import.meta.env.VITE_YOUTUBE_API}`
