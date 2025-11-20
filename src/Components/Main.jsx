@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import TopButton from './TopButton'
 import { ButtonData } from '../utils/Constants'
+import usePopularVideos from '../hooks/usePopularVideos'
 const Main = () => {
- 
+ usePopularVideos()
   const[isActive ,setIsActive]=useState('All')
+  
   const handleClick=(tab)=>{
     setIsActive(tab)
   }
+ 
   return (
     <div>
       <div className='flex flex-nowrap gap-3 overflow-x-scroll hide-Scroll '>
