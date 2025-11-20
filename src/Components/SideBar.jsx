@@ -10,8 +10,8 @@ const SideBar = () => {
     setIsActive(tab)
   }
   return (
-    <div className='lg:w-62 px-2 '>
-        <ul className='lg:w-full'>
+    <div className='min-w-60 px-2 '>
+        <ul className=''>
           {SidebarData.map(side=><SidebarTab key={side.tabName} icon={side.icon} tabName={side.tabName} onClick={()=>handleClick(side.tabName)} isActive={isActive} />)}
         
         </ul>

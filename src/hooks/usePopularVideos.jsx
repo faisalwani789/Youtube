@@ -7,11 +7,12 @@ const usePopularVideos = () => {
     const popularVideos=useSelector(store=>store?.popular)
     useEffect(() => {
         const fetchPopular = () => {
-            fetch(Youtube_Popular_Videos).then(res => res.json()).then(res => {dispatch(addVideos(res?.items)) })
+            fetch(Youtube_Popular_Videos).then(res => res.json()).then(res => {dispatch(addVideos(res?.items));console.log(res) })
         }
         if(popularVideos.length === 0){
             console.log(popularVideos.length)
-            console.log("get data"); fetchPopular()
+            console.log("get data"); 
+            fetchPopular()
         }
        
     }, [dispatch,popularVideos.length])

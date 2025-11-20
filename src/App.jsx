@@ -8,7 +8,7 @@ const App = () => {
  
     <div className=''>
         <Header/>
-        <div className='flex'>
+        <div className='flex flex-nowrap'>
           <SideBar/>
           <Outlet/>
         </div>
