@@ -1,16 +1,23 @@
 import { useState } from 'react'
-
+import { useSelector } from 'react-redux'
 import SidebarTab from './SidebarTab'
 import SignIn from './SignIn'
 import { ExploreData, SidebarData } from '../utils/Constants'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import YoutubeLogo from './YoutubeLogo'
 const SideBar = () => {
   const[isActive,setIsActive]=useState('Home')
+  const {sideBar,absSidebar}=useSelector(store=>store.settings)
   const handleClick=(tab)=>{
     setIsActive(tab)
   }
+  // console.log(sideBar)
+  if(!sideBar && !absSidebar){
+    return null
+  }
   return (
-    <div className='min-w-60 px-2 '>
+    <div className={`lg:w-60 lg:min-w-60 px-2 overflow-y-scroll  self-start ${absSidebar ? 'absolute z-20 top-0 left-0 bg-white':'sticky top-0'}   `}>
+      {absSidebar && <div className='py-5'><YoutubeLogo /></div>   }
         <ul className=''>
           {SidebarData.map(side=><SidebarTab key={side.tabName} icon={side.icon} tabName={side.tabName} onClick={()=>handleClick(side.tabName)} isActive={isActive} />)}
         

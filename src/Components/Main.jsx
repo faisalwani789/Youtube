@@ -23,18 +23,19 @@ const Main = () => {
   //  })
   return (
     <div className='min-w-0 px-4'>
-      <div className='flex flex-nowrap gap-3 overflow-x-scroll hide-Scroll '>
+      <div className='flex flex-nowrap gap-3 overflow-x-scroll hide-Scroll py-3 '>
         {ButtonData.map(button => <TopButton key={button.text} text={button.text} onClick={() => handleClick(button.text)} isActive={isActive} />)}
 
       </div>
 
       <div className=' grid  lg:grid-cols-3 md:grid-cols-2 gap-4 '>
-        <VideoCard info={popularVideos[3]} />
+        {popularVideos?.map(item=><VideoCard info={item}  />)}
+        {/* <VideoCard info={popularVideos[3]} />
         <VideoCard info={popularVideos[4]} />
         <VideoCard info={popularVideos[5]} />
         <VideoCard info={popularVideos[6]} />
         <VideoCard info={popularVideos[7]} />
-        <VideoCard info={popularVideos[8]} />
+        <VideoCard info={popularVideos[8]} /> */}
       </div>
 
     </div>

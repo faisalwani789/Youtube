@@ -4,17 +4,27 @@ import { faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { faBars, faSearch, faPlus, faBell, faMicrophone, faUser } from "@fortawesome/free-solid-svg-icons"
 import FontIcon from './FontIcon'
 import SignIn from './SignIn'
-import {Link} from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setAbsSidebar } from '../Slices/AppSettings'
 const Header = () => {
+  const dispatch=useDispatch()
+  const toggleSidebar=()=>{
+    if(window.location.pathname=='/watch'){
+      dispatch(setAbsSidebar())
+    }
+    else{
+      console.log('show icons icons')
+    }
+  }
   return (
-    <div className='grid  grid-cols-12 py-2 px-2'>
+    <div className='grid  grid-cols-12 py-4 px-2'>
       <div className='flex items-center md:space-x-4 col-span-4 sm:col-span-4 md:col-span-3'>
-        <FontAwesomeIcon icon={faBars} className='text-2xl'/>
+        <FontAwesomeIcon icon={faBars} className='text-2xl' onClick={toggleSidebar}/>
         <div>
-          <FontAwesomeIcon icon={faYoutube} className='text-red-500 text-2xl' />
+          <FontAwesomeIcon icon={faYoutube} className='text-red-500 text-2xl '  />
           <span className='text-2xl tracking-tighter font-semibold'>YouTube</span>
         </div>
-     <Link to={'/watch'}>watch</Link>
+    
       </div>
 
       <div className='flex px-0 col-span-4 md:col-span-6 md:px-6 sm:px-2 sm:col-span-4 justify-center items-center'>
