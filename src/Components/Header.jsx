@@ -11,6 +11,9 @@ const Header = () => {
   const toggleSidebar=()=>{
     if(window.location.pathname=='/watch'){
       dispatch(setAbsSidebar())
+      console.log(
+        'changed'
+      )
     }
     else{
       console.log('show icons icons')

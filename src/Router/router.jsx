@@ -11,12 +11,14 @@ const router=createBrowserRouter([
                 index:true,
                 element:<Main/>
             },
-            {
+            
+        ]  
+    }
+    ,
+    {
                 path:'/watch',
                 element:<Watch/>
             }
-        ]
-    }
 ])
 
 export default router

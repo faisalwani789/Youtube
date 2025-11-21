@@ -1,5 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import moment from 'moment'
+import ViewConverter from '../utils/ViewConverter'
 const VideoCard = ({info}) => {
   
   const{title}=info.snippet.localized
@@ -15,9 +17,10 @@ const VideoCard = ({info}) => {
         <div>
           <img className='w-full rounded-2xl' src={url} alt="" />
         </div>
-        <p>{title}</p>
-        <span>{channelTitle}</span><span>{publishedAt}</span>
-        <p>{viewCount}</p>
+         <p className=' text-sm font-[Roboto] font-semibold '>{title}</p>
+            <p className='text-xs text-gray-500'>{channelTitle}</p>
+            <span className='text-xs text-gray-400'>{moment(publishedAt).fromNow()} . </span>
+            <span className='text-xs text-gray-400'>{ViewConverter(viewCount) }</span>
       </div>
     </div>
      </Link>

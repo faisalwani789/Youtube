@@ -5,7 +5,7 @@ import usePopularVideos from '../hooks/usePopularVideos'
 import { useSelector } from 'react-redux'
 import VideoCard from './VideoCard'
 const Main = () => {
-  usePopularVideos()
+  usePopularVideos(0)
   const popularVideos = useSelector(store => store?.popular)
   const [isActive, setIsActive] = useState('All')
   if (popularVideos.length === 0) {

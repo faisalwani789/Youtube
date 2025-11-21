@@ -6,11 +6,11 @@ const YoutubePlayer = ({ videoId }) => {
 
   // Fixed player options
   const opts = {
-    height: '390',
-    width: '640',
+    height: '100%',
+    width: '100%',
     playerVars: {
       autoplay: 1,
-      controls: 0,
+      controls: 1,
       loop: 1,
       playlist: videoId,
       rel: 0,
@@ -44,11 +44,12 @@ const YoutubePlayer = ({ videoId }) => {
     <Youtube
       key={videoId} // Key prop forces re-render when videoId changes
       videoId={videoId}
+
       opts={opts}
       onReady={onReady}
       onError={onError}
       onStateChange={onStateChange}
-      style={{  }}
+      style={{width:'100%',height:'100%',borderRadius:'16px'}}
     />
   )    
 };
