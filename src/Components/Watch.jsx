@@ -7,9 +7,11 @@ import Header from './Header'
 import SideBar from './SideBar'
 import RecomendedCard from './RecommendedCard'
 import { useSelector } from 'react-redux'
+import useGetVideoDetail from '../hooks/useGetVideoDetail'
 const Watch = () => {
   const [searchParams] = useSearchParams()
   const dispach = useDispatch()
+  useGetVideoDetail(searchParams.get('v'))
   const popularVideos = useSelector(store => store?.popular)
   console.log(popularVideos)
   const query = searchParams.get('v')
@@ -30,6 +32,7 @@ const Watch = () => {
         <div className='shrink-0'>
           <div className='w-220 aspect-video h-auto rounded-xl overflow-hidden '>
             <YoutubePlayer videoId={query} />
+            
 
           </div>
         </div>
