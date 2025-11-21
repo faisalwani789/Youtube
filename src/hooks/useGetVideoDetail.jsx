@@ -7,7 +7,7 @@ const useGetVideoDetail = (id) => {
     useEffect(() => {
         const fetchData = () => {
             fetch(`${VideoDetails}${id}&key=${import.meta.env.VITE_YOUTUBE_API}`).then(res => res.json()).then(res => {
-               dispatch(addVideo(res))
+               dispatch(addVideo(res.items[0]))
             })
         }
 
