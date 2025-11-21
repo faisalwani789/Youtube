@@ -13,9 +13,10 @@ const Watch = () => {
   const dispach = useDispatch()
   const videoDetail=useGetVideoDetail(searchParams.get('v'))
   const popularVideos = useSelector(store => store?.popular)
-  console.log(popularVideos)
+  // console.log(popularVideos)
   const query = searchParams.get('v')
-  console.log(query)
+  // console.log(query)
+  console.log(videoDetail)
   useEffect(() => {
     dispach(setSideBar(false))
     // dispach(setAbsSidebar(true))

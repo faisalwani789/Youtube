@@ -5,7 +5,8 @@ const popularVideoSlice=createSlice({
     reducers:{
         addVideos:(state,action)=>{
             return action.payload
-        }
+        },
+     
     }
 })
 export default popularVideoSlice.reducer
