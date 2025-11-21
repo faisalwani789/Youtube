@@ -11,7 +11,7 @@ import useGetVideoDetail from '../hooks/useGetVideoDetail'
 const Watch = () => {
   const [searchParams] = useSearchParams()
   const dispach = useDispatch()
-  useGetVideoDetail(searchParams.get('v'))
+  const videoDetail=useGetVideoDetail(searchParams.get('v'))
   const popularVideos = useSelector(store => store?.popular)
   console.log(popularVideos)
   const query = searchParams.get('v')
