@@ -13,11 +13,11 @@ const Comment = ({ info }) => {
     const img = info?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl
     const time = info?.snippet?.topLevelComment?.snippet?.publishedAt
     const likes = info?.snippet?.topLevelComment?.snippet?.likeCount
-    const replies = info?.snippet?.topLevelComment?.snippet?.totalReplyCount
+    const replies = info?.snippet?.totalReplyCount
     return (
         <div className='flex items-start gap-4'>
-            <div className='rounded-full overflow-hidden'>
-                <img src={img} alt="" />
+            <div className='rounded-full w-12 h-12 overflow-hidden'>
+                <img className='w-full h-full' src={img} alt="img" />
             </div>
             <div className=''>
                 <div>

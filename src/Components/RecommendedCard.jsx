@@ -18,7 +18,7 @@ const RecommendedCard = ({ info }) => {
             <img className='w-full rounded-lg' src={url} alt="" />
           </div>
           <div className='pl-4'>
-            <p className=' text-sm font-[Roboto] font-semibold '>{title}</p>
+            <p className=' text-sm font-[Roboto] font-semibold line-clamp-2 '>{title}</p>
             <p className='text-xs text-gray-500 '>{channelTitle}</p>
             <span className='text-xs text-gray-400'>{moment(publishedAt).fromNow()} . </span>
             <span className='text-xs text-gray-400'>{ViewConverter(viewCount) }</span>
