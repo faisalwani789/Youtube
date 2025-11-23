@@ -83,7 +83,7 @@ const Watch = () => {
                   <button className='bg-black rounded-4xl text-white px-2 py-2'>Subscribe</button>
                 </div>
                 <div className='flex py-2 space-x-4 sm:space-x-4 overflow-x-scroll'>
-                  <FontIcon children={ViewConverter( videoInfo?.statistics?.likeCount)} icon={faThumbsUp}  className={'text-xl'} />
+                  <FontIcon children={ViewConverter(videoInfo?.statistics?.likeCount)} icon={faThumbsUp} className={'text-xl'} />
                   <VideoButtons />
 
                 </div>
@@ -97,13 +97,18 @@ const Watch = () => {
               </div>
               <button onClick={() => setIsExpanded(!isExpanded)} >{isExpanded ? 'show less' : '...'}</button>
             </div>
+            {
+              <button className='bg-gray-200 py-2 w-full rounded-md ' onClick={() => setShowComments(!showComments)}>
+                <p className='text-left pl-8'>Comments</p>
+                <img className='inline rounded-4xl py-2' src={comments[0]?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl} alt="" />
+                <p className='line-clamp-2 text-left px-2 inline'>{comments[0]?.snippet?.topLevelComment?.snippet?.textDisplay}</p>
 
-            <div className='px-2 sm:px-0'>
-              <h2 className='text-2xl font-bold'>Comments</h2>
-              {<button className='bg-orange-400' onClick={() => setShowComments(!showComments)}>{showComments ? 'Hide Comments' : 'Show Comments'}</button>}
-              {showComments && <div>{comments.map(comment => <Comment info={comment} />)}
-              </div>}
+              </button>
+            }
+            <div className='px-3 pb-4 sm:px-0' >
 
+
+              {showComments && <div>{comments.map(comment => <Comment info={comment} />)}</div>}
 
 
 
