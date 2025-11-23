@@ -16,18 +16,32 @@ import Comment from './Comment'
 const Watch = () => {
   const [searchParams] = useSearchParams()
   const dispach = useDispatch()
-const {comments}=useGetComments(searchParams.get('v'))
+  const { comments } = useGetComments(searchParams.get('v'))
   useGetVideoDetail(searchParams.get('v'))
-   
+
   const popularVideos = useSelector(store => store?.popular)
   const { videoInfo } = useSelector(store => store.video)
-  
-  console.log(JSON.stringify(comments,null,2))
+
+  // console.log(JSON.stringify(comments,null,2))
   const [isExpanded, setIsExpanded] = useState(false)
+  const [showComments, setShowComments] = useState(window.visualViewport?.width || document.documentElement.clientWidth >600)
   // console.log(popularVideos)
   const query = searchParams.get('v')
   // console.log(query)
   const { short, full } = useBeautifulDescription(videoInfo?.snippet?.description)
+  useEffect(() => {
+    const handleResize = () => {
+      
+     setShowComments(prev=>{
+      console.log('prev'+prev);
+      const next=window.VisualViewport?.width || document.documentElement.clientWidth >600
+      console.log('next '+window.innerWidth +next)
+      return next
+    })
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
   useEffect(() => {
     dispach(setSideBar(false))
     // dispach(setAbsSidebar(true))
@@ -47,12 +61,12 @@ const {comments}=useGetComments(searchParams.get('v'))
 
 
           </div>
-          <div className='w-full py-4'>
+          <div className='py-4'>
             <p className=' text-black text-2xl  font-bold'>{videoInfo?.snippet?.title}</p>
-            <div className='flex justify-between'>
+            <div className='flex flex-col justify-between xl:flex-row'>
               <div className='flex items-center'>
                 <div>
-                  <img src={''} alt="" />
+                  <img  alt="" />
                 </div>
                 <div>
                   <p>{videoInfo?.snippet?.channelTitle}</p>
@@ -80,10 +94,17 @@ const {comments}=useGetComments(searchParams.get('v'))
             <button onClick={() => setIsExpanded(!isExpanded)} >{isExpanded ? 'show less' : '...'}</button>
           </div>
 
-          <div className='comments'>
+          <div className='comments relative'>
             <h2 className='text-2xl font-bold'>Comments</h2>
-            {comments.map(comment=><Comment info={comment}/>)}
-           
+            {<button className='bg-orange-400' onClick={()=>setShowComments(!showComments)}>{showComments?'Hide Comments':'Show Comments'}</button>}
+            {showComments && <div className={` `}>
+              
+              {comments.map(comment => <Comment info={comment} />)}
+            </div>}
+            
+
+
+
           </div>
 
         </div>

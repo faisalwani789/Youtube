@@ -25,7 +25,7 @@ const Comment = ({ info }) => {
                     <span className='text-xs text-gray-500'>{moment(time).fromNow()}</span>
                 </div>
 
-                <p className='text-black text-md'>{comment}</p>
+                <div className='text-black text-md' dangerouslySetInnerHTML={{__html:`<p>${comment}</p>`}}></div>
                 <div className='flex items-center  gap-2'>
                     
                     <CommentIcon icon={faThumbsUp}/>
