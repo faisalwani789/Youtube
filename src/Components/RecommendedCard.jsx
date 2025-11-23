@@ -19,7 +19,7 @@ const RecommendedCard = ({ info }) => {
             <img className='w-full rounded-lg' src={url} alt="" />
           </div>
           <div className='pl-4'>
-            <p className='max-w-55 text-sm font-[Roboto] font-semibold line-clamp-2 break-words whitespace-normal '>{title}</p>
+            <p className='max-w-30 pr-2 text-sm font-[Roboto] font-semibold line-clamp-3 break-words whitespace-normal '>{title}</p>
             <p className='text-xs text-gray-500 '>{channelTitle}</p>
             <span className='text-xs text-gray-400'>{moment(publishedAt).fromNow()} . </span>
             <span className='text-xs text-gray-400'>{ViewConverter(viewCount) }</span>

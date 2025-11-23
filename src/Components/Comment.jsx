@@ -7,7 +7,7 @@ import SignIn from './SignIn'
 import CommentIcon from './CommentIcon'
 
 const Comment = ({ info }) => {
-    console.log(info)
+   
     const name = info?.snippet?.topLevelComment?.snippet?.authorDisplayName
     const comment = info?.snippet?.topLevelComment?.snippet?.textDisplay
     const img = info?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl
@@ -16,8 +16,8 @@ const Comment = ({ info }) => {
     const replies = info?.snippet?.totalReplyCount
     return (
         <div className='flex items-start gap-4'>
-            <div className='rounded-full w-12 h-12 overflow-hidden'>
-                <img className='w-full h-full' src={img} alt="img" />
+            <div className='rounded-full  overflow-hidden'>
+                <img className='' src={img} alt="img" />
             </div>
             <div className=''>
                 <div>

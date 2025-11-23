@@ -10,35 +10,40 @@ import { useSelector } from 'react-redux'
 import useGetVideoDetail from '../hooks/useGetVideoDetail'
 import FontIcon from './FontIcon'
 import { useBeautifulDescription } from '../hooks/useBeautifulDescription'
-import { faThumbsUp, faThumbsDown, faShare, faDownload, faEllipsisVertical, faBookmark, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
+import { ScrollRestoration } from 'react-router-dom'
 import useGetComments from '../hooks/useGetComments'
 import Comment from './Comment'
 import VideoButtons from './VideoButtons'
+import useGetChannelInfo from '../hooks/useGetChannelInfo'
+import ViewConverter from '../utils/ViewConverter'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 const Watch = () => {
   const [searchParams] = useSearchParams()
   const dispach = useDispatch()
+
   const { comments } = useGetComments(searchParams.get('v'))
   useGetVideoDetail(searchParams.get('v'))
 
   const popularVideos = useSelector(store => store?.popular)
   const { videoInfo } = useSelector(store => store.video)
+  const { channelInfo } = useGetChannelInfo(videoInfo?.snippet?.channelId)
 
   // console.log(JSON.stringify(comments,null,2))
   const [isExpanded, setIsExpanded] = useState(false)
-  const [showComments, setShowComments] = useState(window.visualViewport?.width || document.documentElement.clientWidth >600)
+  const [showComments, setShowComments] = useState(false)
   // console.log(popularVideos)
   const query = searchParams.get('v')
   // console.log(query)
   const { short, full } = useBeautifulDescription(videoInfo?.snippet?.description)
   useEffect(() => {
     const handleResize = () => {
-      
-     setShowComments(prev=>{
-      console.log('prev'+prev);
-      const next=window.VisualViewport?.width || document.documentElement.clientWidth >600
-      console.log('next '+window.innerWidth +next)
-      return next
-    })
+
+      setShowComments(prev => {
+        console.log('prev' + prev);
+        const next = window.VisualViewport?.width || document.documentElement.clientWidth > 600
+        console.log('next ' + window.innerWidth + next)
+        return next
+      })
     }
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
@@ -52,67 +57,69 @@ const Watch = () => {
     }
   }, [])
   return (
-    <div className='font-[Roboto]'>
-      <Header />
-      <SideBar />
-      <div className="px-0 lg:px-15 pt-10 flex justify-center flex-col gap-x-6 lg:flex-row lg:gap-y-6  ">
-        <div className='shrink 2xl:shrink-0 max-w-240 '>
-          <div className='w-full aspect-video h-auto rounded-xl overflow-hidden '>
-            <YoutubePlayer videoId={query} />
-
-
-          </div>
-          <div className='py-4'>
-            <p className=' text-black text-2xl  font-bold'>{videoInfo?.snippet?.title}</p>
-            <div className='flex flex-col justify-between xl:flex-row'>
-              <div className='flex items-center'>
-                <div>
-                  <img  alt="" />
-                </div>
-                <div>
-                  <p>{videoInfo?.snippet?.channelTitle}</p>
-                  <span>subscribers</span>
-                </div>
-                <button className='bg-black rounded-4xl text-white px-2 py-1'>Subscribe</button>
-              </div>
-              <div className='flex space-x-4'>
-                <VideoButtons/>
-                
-              </div>
-            </div>
-          </div>
-
-          <div className='text-sm leading-6 space-y-3 text-gray-800 overflow-hidden'>
-            <div className={`${isExpanded ? 'max-h-none ' : 'max-h-32'}`} dangerouslySetInnerHTML={{ __html: `<p class="${isExpanded ? '' : 'line-clamp-1'}">${isExpanded ? full : short} </p>` }} >
+    <>
+      <ScrollRestoration />
+      <div className='font-[Roboto] min-h-screen'>
+        <Header />
+        <SideBar />
+        <div className="px-0 sm:px-2 mx-auto lg:px-15  pt-0 sm:pt-10 flex justify-center flex-col gap-x-6 lg:flex-row lg:gap-y-6  ">
+          <div className='shrink 2xl:shrink-0 max-w-240 '>
+            <div className='w-full aspect-video h-auto rounded-none md:rounded-xl overflow-hidden '>
+              <YoutubePlayer videoId={query} />
 
 
             </div>
-            <button onClick={() => setIsExpanded(!isExpanded)} >{isExpanded ? 'show less' : '...'}</button>
+            <div className='py-4 px-2 sm:px-0'>
+              <p className=' text-black text-2xl  font-bold'>{videoInfo?.snippet?.title}</p>
+              <div className='flex flex-col justify-between xl:flex-row'>
+                <div className=' py-2 flex gap-2 justify-start items-center'>
+                  <div className='w-12 h-12 overflow-hidden'>
+                    <img className='w-full h-full rounded-4xl' src={channelInfo?.snippet.thumbnails.high.url} alt="" />
+                  </div>
+                  <div >
+                    <p>{videoInfo?.snippet?.channelTitle}</p>
+                    <span className='text-xs text-gray-400'>{ViewConverter(channelInfo?.statistics?.subscriberCount)}</span>
+                  </div>
+                  <button className='bg-black rounded-4xl text-white px-2 py-2'>Subscribe</button>
+                </div>
+                <div className='flex py-2 space-x-4 sm:space-x-4 overflow-x-scroll'>
+                  <FontIcon children={ViewConverter( videoInfo?.statistics?.likeCount)} icon={faThumbsUp}  className={'text-xl'} />
+                  <VideoButtons />
+
+                </div>
+              </div>
+            </div>
+
+            <div className='px-2 sm:px-0text-sm leading-6 space-y-3 text-gray-800 overflow-hidden'>
+              <div className={`${isExpanded ? 'max-h-none ' : 'max-h-32'}`} dangerouslySetInnerHTML={{ __html: `<p class="${isExpanded ? '' : 'line-clamp-1'}">${isExpanded ? full : short} </p>` }} >
+
+
+              </div>
+              <button onClick={() => setIsExpanded(!isExpanded)} >{isExpanded ? 'show less' : '...'}</button>
+            </div>
+
+            <div className='px-2 sm:px-0'>
+              <h2 className='text-2xl font-bold'>Comments</h2>
+              {<button className='bg-orange-400' onClick={() => setShowComments(!showComments)}>{showComments ? 'Hide Comments' : 'Show Comments'}</button>}
+              {showComments && <div>{comments.map(comment => <Comment info={comment} />)}
+              </div>}
+
+
+
+
+            </div>
+
           </div>
+          <div className='max-w-100 px-2 sm:px-0'>
+            <div className='flex flex-col gap-y-3 ' >
+              {popularVideos.map(vid => <RecomendedCard info={vid} />)}
+              {/* <RecomendedCard info={popularVideos[0]} /> */}
 
-          <div className='comments relative'>
-            <h2 className='text-2xl font-bold'>Comments</h2>
-            {<button className='bg-orange-400' onClick={()=>setShowComments(!showComments)}>{showComments?'Hide Comments':'Show Comments'}</button>}
-            {showComments && <div className={` `}>
-              
-              {comments.map(comment => <Comment info={comment} />)}
-            </div>}
-            
-
-
-
-          </div>
-
-        </div>
-        <div className='max-w-100'>
-          <div className='flex flex-col gap-y-3 ' >
-            {popularVideos.map(vid => <RecomendedCard info={vid} />)}
-            {/* <RecomendedCard info={popularVideos[0]} /> */}
-
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

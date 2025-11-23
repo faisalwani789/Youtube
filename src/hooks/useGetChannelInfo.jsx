@@ -6,7 +6,7 @@ const useGetChannelInfo = (channelId) => {
    
     useEffect(()=>{
          const fetchInfo=()=>{
-        fetch(`${Channel_Details}${channelId}&key=${import.meta.env.VITE_YOUTUBE_API}`).then(res=>res.json()).then(res=>setChannelInfo(res))
+        fetch(`${Channel_Details}${channelId}&key=${import.meta.env.VITE_YOUTUBE_API}`).then(res=>res.json()).then(res=>{setChannelInfo(res.items[0])})
     }
         fetchInfo()
     },[channelId])

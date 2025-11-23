@@ -17,7 +17,7 @@ const VideoCard = ({ info }) => {
       <div className='w-full '>
          <Link to={`/watch?v=${info.id}`}>
         <div>
-          <img className='w-full rounded-2xl' src={url} alt="" />
+          <img className='w-full sm:rounded-2xl' src={url} alt="thumbnail" />
         </div>
         <p className=' text-sm font-[Roboto] font-semibold break-words whitespace-normal'>{title}</p>
         <p className='text-xs text-gray-500 '>{channelTitle}</p>

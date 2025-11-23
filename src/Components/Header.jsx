@@ -20,27 +20,27 @@ const Header = () => {
     }
   }
   return (
-    <div className='sticky top-0 w-full bg-white grid  grid-cols-12 py-4 px-2'>
-      <div className='flex items-center md:space-x-4 col-span-4 sm:col-span-4 md:col-span-3'>
+    <div className='sticky top-0 w-full bg-white grid  grid-cols-12 py-2 sm:py-4 px-2'>
+      <div className='flex items-center md:space-x-4 col-span-3 sm:col-span-4 md:col-span-3'>
         <FontAwesomeIcon icon={faBars} className='text-2xl' onClick={toggleSidebar}/>
         <div>
           <FontAwesomeIcon icon={faYoutube} className='text-red-500 text-2xl '  />
-          <span className='text-2xl tracking-tighter font-semibold'>YouTube</span>
+          <span className='hidden sm:inline text-2xl tracking-tighter font-semibold'>YouTube</span>
         </div>
     
       </div>
 
-      <div className='flex px-0 col-span-4 md:col-span-6 md:px-6 sm:px-2 sm:col-span-4 justify-center items-center'>
-        <input className='hidden sm:block outline-1 rounded-l-4xl w-full px-4 py-1.5' type="text" />
+      <div className='flex px-0 col-span-6 md:col-span-6 md:px-6 sm:px-2 sm:col-span-4  justify-center items-center'>
+        <input className=' outline-1 rounded-l-4xl w-full px-4 py-1.5' type="text" />
        
-        <FontAwesomeIcon icon={faSearch} className='border-0 sm:border-1 sm:rounded-r-full text-xl px-3 py-2 mr-3 hover:bg-slate-200'/>
-        <FontIcon icon={faMicrophone} className={' text-2xl'}  />
+        <FontAwesomeIcon icon={faSearch} className='border-1 rounded-r-full text-xl px-3 py-2 mr-3 hover:bg-slate-200'/>
+        <FontIcon icon={faMicrophone} className={' text-2xl'} className3={'hidden sm:block'}  />
       </div>
 
-      <div className='flex gap-4 justify-end items-center sm:col-span-4   md:col-span-3 col-span-4'>
+      <div className='flex gap-4 justify-end items-center col-span-3 sm:col-span-4   md:col-span-3 '>
         {/* <FontIcon icon={faPlus} children={'create'}/> */}
-        <FontIcon icon={faBell} className={' text-xl'} />
-        <SignIn icon={faUser}/>
+        <FontIcon icon={faBell} className={' text-xl'} className3={'hidden sm:block'} />
+        <SignIn icon={faUser} />
       </div>
     </div>
   )

@@ -7,7 +7,7 @@
 }
 @layer components {
     .icon-Primary{
-        @apply text-2xl font-[Roboto] ;
+        @apply text-2xl font-[Roboto]  ;
     }
     .bg-primary{
         @apply bg-slate-100 text-black;

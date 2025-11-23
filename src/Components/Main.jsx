@@ -17,13 +17,13 @@ const Main = () => {
   }
  
   return (
-    <div className='min-w-0 px-4'>
+    <div className='min-w-0 px-0 sm:px-4 '>
       <div className='flex flex-nowrap gap-3 overflow-x-scroll hide-Scroll py-3 '>
         {ButtonData.map(button => <TopButton key={button.text} text={button.text} onClick={() => handleClick(button.text)} isActive={isActive} />)}
 
       </div>
 
-      <div className=' grid  lg:grid-cols-3 md:grid-cols-2 gap-4 '>
+      <div className=' grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4 '>
         {popularVideos?.map(item=><VideoCard info={item}  />)}
         {/* <VideoCard info={popularVideos[3]} /> */}
       </div>
