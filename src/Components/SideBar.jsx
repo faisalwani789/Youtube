@@ -16,7 +16,7 @@ const SideBar = () => {
     return null
   }
   return (
-    <div className={`lg:w-60 lg:min-w-60 px-2 overflow-y-scroll  self-start ${absSidebar ? 'absolute z-20 top-0 left-0 bg-white':'sticky top-0'}   `}>
+    <div className={` hidden md:block md:shrink-0 lg:w-60 lg:min-w-60 px-2 overflow-y-scroll  self-start ${absSidebar ? 'absolute z-20 top-0 left-0 bg-white':'sticky top-20'}   `}>
       {absSidebar && <div className='py-5'><YoutubeLogo /></div>   }
         <ul className=''>
           {SidebarData.map(side=><SidebarTab key={side.tabName} icon={side.icon} tabName={side.tabName} onClick={()=>handleClick(side.tabName)} isActive={isActive} />)}

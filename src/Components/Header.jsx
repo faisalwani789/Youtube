@@ -20,7 +20,7 @@ const Header = () => {
     }
   }
   return (
-    <div className='grid  grid-cols-12 py-4 px-2'>
+    <div className='sticky top-0 w-full bg-white grid  grid-cols-12 py-4 px-2'>
       <div className='flex items-center md:space-x-4 col-span-4 sm:col-span-4 md:col-span-3'>
         <FontAwesomeIcon icon={faBars} className='text-2xl' onClick={toggleSidebar}/>
         <div>
@@ -31,14 +31,14 @@ const Header = () => {
       </div>
 
       <div className='flex px-0 col-span-4 md:col-span-6 md:px-6 sm:px-2 sm:col-span-4 justify-center items-center'>
-        <input className='outline-1 rounded-l-4xl w-full px-4 py-1.5' type="text" />
+        <input className='hidden sm:block outline-1 rounded-l-4xl w-full px-4 py-1.5' type="text" />
        
-        <FontAwesomeIcon icon={faSearch} className='rounded-r-full border-1 text-xl px-3 py-2 mr-3 hover:bg-slate-200'/>
+        <FontAwesomeIcon icon={faSearch} className='border-0 sm:border-1 sm:rounded-r-full text-xl px-3 py-2 mr-3 hover:bg-slate-200'/>
         <FontIcon icon={faMicrophone} className={' text-2xl'}  />
       </div>
 
       <div className='flex gap-4 justify-end items-center sm:col-span-4   md:col-span-3 col-span-4'>
-        <FontIcon icon={faPlus} children={'create'}/>
+        {/* <FontIcon icon={faPlus} children={'create'}/> */}
         <FontIcon icon={faBell} className={' text-xl'} />
         <SignIn icon={faUser}/>
       </div>

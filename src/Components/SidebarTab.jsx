@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 const SidebarTab = ({isActive,icon,onClick,tabName}) => {
     return (
-        <li className={`rounded-lg px-2 py-2  hover:bg-slate-100 ${isActive===tabName?'bg-slate-100':''}`} onClick={onClick}>
+        <li className={`rounded-lg px-0 py-2 lg:p-2 hover:bg-slate-100 ${isActive===tabName?'bg-slate-100':''}`} onClick={onClick}>
             <Link to={"/"} className='space-x-4'><FontAwesomeIcon icon={icon} className='text-xl'/><span className='hidden lg:inline  font-normal text-sm'>{tabName}</span></Link>
         </li>
     )
