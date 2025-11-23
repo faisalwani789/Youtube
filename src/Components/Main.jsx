@@ -15,12 +15,7 @@ const Main = () => {
   const handleClick = (tab) => {
     setIsActive(tab)
   }
-  //  useEffect(()=>{
-  //   const timer=setTimeout(()=>{
-  //       const popularVideos=useSelector(store=>store?.popular)
-  //   },4000)
-  //   return ()=>clearTimeout(timer)
-  //  })
+ 
   return (
     <div className='min-w-0 px-4'>
       <div className='flex flex-nowrap gap-3 overflow-x-scroll hide-Scroll py-3 '>
@@ -30,12 +25,7 @@ const Main = () => {
 
       <div className=' grid  lg:grid-cols-3 md:grid-cols-2 gap-4 '>
         {popularVideos?.map(item=><VideoCard info={item}  />)}
-        {/* <VideoCard info={popularVideos[3]} />
-        <VideoCard info={popularVideos[4]} />
-        <VideoCard info={popularVideos[5]} />
-        <VideoCard info={popularVideos[6]} />
-        <VideoCard info={popularVideos[7]} />
-        <VideoCard info={popularVideos[8]} /> */}
+        {/* <VideoCard info={popularVideos[3]} /> */}
       </div>
 
     </div>

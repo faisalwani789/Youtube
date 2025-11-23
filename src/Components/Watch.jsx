@@ -13,6 +13,7 @@ import { useBeautifulDescription } from '../hooks/useBeautifulDescription'
 import { faThumbsUp, faThumbsDown, faShare, faDownload, faEllipsisVertical, faBookmark, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import useGetComments from '../hooks/useGetComments'
 import Comment from './Comment'
+import VideoButtons from './VideoButtons'
 const Watch = () => {
   const [searchParams] = useSearchParams()
   const dispach = useDispatch()
@@ -75,13 +76,8 @@ const Watch = () => {
                 <button className='bg-black rounded-4xl text-white px-2 py-1'>Subscribe</button>
               </div>
               <div className='flex space-x-4'>
-                <FontIcon children={'4m'} icon={faThumbsUp} className={'text-xl'} />
-                <FontIcon icon={faThumbsDown} className={'text-xl'} />
-                <FontIcon children={'Share'} icon={faShare} className={'text-xl'} />
-                <FontIcon children={'download'} icon={faDownload} className={'text-xl'} />
-                <FontIcon children={'Save'} icon={faBookmark} className={'text-lg'} />
-                <FontIcon icon={faEllipsisVertical} className={'text-xl'} />
-
+                <VideoButtons/>
+                
               </div>
             </div>
           </div>
