@@ -18,30 +18,26 @@ import useGetChannelInfo from '../hooks/useGetChannelInfo'
 import ViewConverter from '../utils/ViewConverter'
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 const Watch = () => {
+   const [isExpanded, setIsExpanded] = useState(false)
+  const [showComments, setShowComments] = useState(false)
   const [searchParams] = useSearchParams()
   const dispach = useDispatch()
-
-  const { comments } = useGetComments(searchParams.get('v'))
-  useGetVideoDetail(searchParams.get('v'))
+const query = searchParams.get('v')
+  const { comments } = useGetComments(query)
+  // console.log(comments)
+  useGetVideoDetail(query)
 
   const popularVideos = useSelector(store => store?.popular)
   const { videoInfo } = useSelector(store => store.video)
   const { channelInfo } = useGetChannelInfo(videoInfo?.snippet?.channelId)
-
-  // console.log(JSON.stringify(comments,null,2))
-  const [isExpanded, setIsExpanded] = useState(false)
-  const [showComments, setShowComments] = useState(false)
-  // console.log(popularVideos)
-  const query = searchParams.get('v')
-  // console.log(query)
   const { short, full } = useBeautifulDescription(videoInfo?.snippet?.description)
   useEffect(() => {
     const handleResize = () => {
 
       setShowComments(prev => {
-        console.log('prev' + prev);
+        // console.log('prev' + prev);
         const next = window.VisualViewport?.width || document.documentElement.clientWidth > 600
-        console.log('next ' + window.innerWidth + next)
+        // console.log('next ' + window.innerWidth + next)
         return next
       })
     }
@@ -97,18 +93,27 @@ const Watch = () => {
               </div>
               <button onClick={() => setIsExpanded(!isExpanded)} >{isExpanded ? 'show less' : '...'}</button>
             </div>
-            {
-              <button className='bg-gray-200 py-2 w-full rounded-md ' onClick={() => setShowComments(!showComments)}>
-                <p className='text-left pl-8'>Comments</p>
-                <img className='inline rounded-4xl py-2' src={comments[0]?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl} alt="" />
-                <p className='line-clamp-2 text-left px-2 inline'>{comments[0]?.snippet?.topLevelComment?.snippet?.textDisplay}</p>
+
+            <div className='px-4 py-4'>
+              <button className='bg-gray-100 py-2  w-full rounded-md  ' onClick={() => setShowComments(!showComments)}>
+                <p className='text-left pl-3 font-semibold'>Comments</p>
+                <div className='flex items-center px-2 space-x-3'>
+                  <div className='rounded-full  overflow-hidden shrink-0'>
+                    <img className=' w-8' src={comments[1]?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl} alt="img" />
+                  </div>
+                  <div className='text-black text-md ' dangerouslySetInnerHTML={{ __html: `<p class="line-clamp-2">${comments[1]?.snippet?.topLevelComment?.snippet?.textDisplay}</p>` }}>
+                  </div>
+
+                </div>
+
 
               </button>
-            }
+            </div>
+
             <div className='px-3 pb-4 sm:px-0' >
 
 
-              {showComments && <div>{comments.map(comment => <Comment info={comment} />)}</div>}
+              {showComments && <div>{comments.map(comment => <Comment key={comment.id} info={comment} />)}</div>}
 
 
 

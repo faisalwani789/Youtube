@@ -7,11 +7,9 @@ const usePopularVideos = (categoryId) => {
     const popularVideos=useSelector(store=>store?.popular)
     useEffect(() => {
         const fetchPopular = () => {
-            fetch(`${Youtube_Popular_Videos}${categoryId}&key=${import.meta.env.VITE_YOUTUBE_API}`).then(res => res.json()).then(res => {dispatch(addVideos(res?.items));console.log(res) })
+            fetch(`${Youtube_Popular_Videos}${categoryId}&key=${import.meta.env.VITE_YOUTUBE_API}`).then(res => res.json()).then(res => {dispatch(addVideos(res?.items))})
         }
         if(popularVideos.length === 0){
-            console.log(popularVideos.length)
-            console.log("get data"); 
             fetchPopular()
         }
        

@@ -16,16 +16,16 @@ const Comment = ({ info }) => {
     const replies = info?.snippet?.totalReplyCount
     return (
         <div className='flex items-start gap-4'>
-            <div className='rounded-full  overflow-hidden'>
-                <img className='' src={img} alt="img" />
+            <div className='rounded-full  overflow-hidden shrink-0'>
+                <img className='' src={img}  alt="img" />
             </div>
-            <div className=''>
+            <div>
                 <div>
                     <span className='text-sm font-semibold' >{name}  .</span>
                     <span className='text-xs text-gray-500'>{moment(time).fromNow()}</span>
                 </div>
 
-                <div className='text-black text-md' dangerouslySetInnerHTML={{__html:`<p>${comment}</p>`}}></div>
+                <div className='text-black text-md ' dangerouslySetInnerHTML={{__html:`<p>${comment}</p>`}}></div>
                 <div className='flex items-center  gap-2'>
                     
                     <CommentIcon icon={faThumbsUp}/>

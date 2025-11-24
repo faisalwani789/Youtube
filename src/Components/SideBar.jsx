@@ -11,7 +11,7 @@ const SideBar = () => {
   const handleClick=(tab)=>{
     setIsActive(tab)
   }
-  console.log(sideBar)
+  
   if(!sideBar && !absSidebar){
     return null
   }

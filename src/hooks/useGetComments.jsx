@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Youtube_comments } from '../utils/Constants'
 
 const useGetComments = (id) => {
-    console.log(id)
     const [comments, setComments] = useState([])
 
     useEffect(() => {

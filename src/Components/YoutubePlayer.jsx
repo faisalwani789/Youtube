@@ -21,7 +21,7 @@ const YoutubePlayer = ({ videoId }) => {
   };
 
   const onReady = (event) => {
-    console.log('YouTube player is ready', event.target);
+    // console.log('YouTube player is ready', event.target);
     setPlayer(event.target);
   };
 
@@ -34,7 +34,7 @@ const YoutubePlayer = ({ videoId }) => {
   };
 
   const onStateChange = (event) => {
-    console.log('Player state changed:', event.data);
+  //   console.log('Player state changed:', event.data);
   };
 
 
