@@ -24,7 +24,7 @@ const Main = () => {
       </div>
 
       <div className=' grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4 '>
-        {popularVideos?.map(item=><VideoCard key={item.id} info={item}  />)}
+        {popularVideos?.map(item=><VideoCard key={item.etag} info={item}  />)}
         {/* <VideoCard info={popularVideos[3]} /> */}
       </div>
 
