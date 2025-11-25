@@ -17,12 +17,15 @@ import VideoButtons from './VideoButtons'
 import useGetChannelInfo from '../hooks/useGetChannelInfo'
 import ViewConverter from '../utils/ViewConverter'
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+
+import CommentContainer from './CommentContainer'
 const Watch = () => {
-   const [isExpanded, setIsExpanded] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
   const [showComments, setShowComments] = useState(false)
+  const[showDummy,setShowDummy]=useState(false)
   const [searchParams] = useSearchParams()
   const dispach = useDispatch()
-const query = searchParams.get('v')
+  const query = searchParams.get('v')
   const { comments } = useGetComments(query)
   // console.log(comments)
   useGetVideoDetail(query)
@@ -62,8 +65,8 @@ const query = searchParams.get('v')
         <Header />
         <SideBar />
         <div className="px-0 sm:px-2 mx-auto lg:px-15  pt-0 sm:pt-10 flex justify-center flex-col gap-x-6 lg:flex-row lg:gap-y-6  ">
-          <div className='shrink-1    grow-1 2xl:grow-0 basis-6xl '>
-           
+          <div className='shrink-1    grow-1 2xl:grow-0 2xl:basis-6xl '>
+
             <div className='w-full aspect-video h-auto rounded-none md:rounded-xl overflow-hidden '>
               <YoutubePlayer videoId={query} />
 
@@ -99,7 +102,7 @@ const query = searchParams.get('v')
             </div>
 
             <div className='px-4 py-4'>
-              <button className='bg-gray-100 py-2  w-full rounded-md  ' onClick={() => setShowComments(!showComments)}>
+              <button className='bg-gray-100 py-2 mb-2 w-full rounded-md  ' onClick={() => setShowComments(!showComments)}>
                 <p className='text-left pl-3 font-semibold'>Comments</p>
                 <div className='flex items-center px-2 space-x-3'>
                   <div className='rounded-full  overflow-hidden shrink-0'>
@@ -109,18 +112,14 @@ const query = searchParams.get('v')
                   </div>
 
                 </div>
-
-
               </button>
+
+              <button className='bg-gray-100 px-3 py-2' onClick={()=>setShowDummy(!showDummy)}>Dummy Comments</button>
             </div>
 
-            <div className='px-3 pb-4 sm:px-0' >
-
-
+            <div className='px-3 pb-4 sm:px-0 ' >
               {showComments && comments.map(comment => <Comment key={comment.id} info={comment} />)}
-
-
-
+              {showDummy && <CommentContainer/>}
             </div>
 
           </div>
