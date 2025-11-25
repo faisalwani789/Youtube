@@ -28,8 +28,11 @@ const query = searchParams.get('v')
   useGetVideoDetail(query)
 
   const popularVideos = useSelector(store => store?.popular)
+  // console.log(popularVideos+'from watch page')
   const { videoInfo } = useSelector(store => store.video)
+  // console.log(JSON.stringify(videoInfo,null,2))
   const { channelInfo } = useGetChannelInfo(videoInfo?.snippet?.channelId)
+  console.log(channelInfo)
   const { short, full } = useBeautifulDescription(videoInfo?.snippet?.description)
   useEffect(() => {
     const handleResize = () => {
@@ -55,11 +58,12 @@ const query = searchParams.get('v')
   return (
     <>
       <ScrollRestoration />
-      <div className='font-[Roboto] min-h-screen'>
+      <div className='font-[Roboto] '>
         <Header />
         <SideBar />
         <div className="px-0 sm:px-2 mx-auto lg:px-15  pt-0 sm:pt-10 flex justify-center flex-col gap-x-6 lg:flex-row lg:gap-y-6  ">
-          <div className='shrink 2xl:shrink-0 max-w-240 '>
+          <div className='shrink-1    grow-1 2xl:grow-0 basis-6xl '>
+           
             <div className='w-full aspect-video h-auto rounded-none md:rounded-xl overflow-hidden '>
               <YoutubePlayer videoId={query} />
 
@@ -113,7 +117,7 @@ const query = searchParams.get('v')
             <div className='px-3 pb-4 sm:px-0' >
 
 
-              {showComments && <div>{comments.map(comment => <Comment key={comment.id} info={comment} />)}</div>}
+              {showComments && comments.map(comment => <Comment key={comment.id} info={comment} />)}
 
 
 

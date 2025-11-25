@@ -15,17 +15,17 @@ const Comment = ({ info }) => {
     const likes = info?.snippet?.topLevelComment?.snippet?.likeCount
     const replies = info?.snippet?.totalReplyCount
     return (
-        <div className='flex items-start gap-4'>
+        <div className='flex items-start gap-4 max-w-220 '>
             <div className='rounded-full  overflow-hidden shrink-0'>
                 <img className='' src={img}  alt="img" />
             </div>
-            <div>
+            <div className="min-w-0">
                 <div>
                     <span className='text-sm font-semibold' >{name}  .</span>
                     <span className='text-xs text-gray-500'>{moment(time).fromNow()}</span>
                 </div>
 
-                <div className='text-black text-md ' dangerouslySetInnerHTML={{__html:`<p>${comment}</p>`}}></div>
+                <div className='text-black text-md break-words  ' dangerouslySetInnerHTML={{__html:`<p class=" whitespace-normal">${comment}</p>`}}></div>
                 <div className='flex items-center  gap-2'>
                     
                     <CommentIcon icon={faThumbsUp}/>

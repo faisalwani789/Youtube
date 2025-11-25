@@ -6,8 +6,8 @@ const VideoCard = ({ info }) => {
 
   const { title } = info.snippet
   const { channelTitle, publishedAt } = info.snippet
-  const { viewCount } = info.statistics
-  const url = info?.snippet?.thumbnails?.maxres?.url || ''
+  const { viewCount } = info.statistics ||''
+  const url = info?.snippet?.thumbnails?.maxres?.url ||  info?.snippet?.thumbnails?.high?.url
   if (!url) return null
   return (
 
@@ -15,7 +15,7 @@ const VideoCard = ({ info }) => {
     
      
       <div className='w-full '>
-         <Link to={`/watch?v=${info.id}`}>
+         <Link to={`/watch?v=${info.id?.videoId|| info.id}`}>
         <div>
           <img className='w-full sm:rounded-2xl' src={url} alt="thumbnail" />
         </div>

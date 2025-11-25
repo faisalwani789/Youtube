@@ -102,3 +102,4 @@ export const VideoDetails=` https://youtube.googleapis.com/youtube/v3/videos?par
 export const Youtube_comments=`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=100&videoId=`
 export const Channel_Details= `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=`
 export const AutoSuggest=`https://netmaxgptbkd-1.onrender.com/api/suggest?q=`
+export const Youtube_Search=`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=100&q=`
