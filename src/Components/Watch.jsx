@@ -17,12 +17,15 @@ import VideoButtons from './VideoButtons'
 import useGetChannelInfo from '../hooks/useGetChannelInfo'
 import ViewConverter from '../utils/ViewConverter'
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import LiveChat from './LiveChat'
 
-import CommentContainer from './CommentContainer'
+import { Dummy_Comments } from '../utils/Constants'
+import CommentItem from './CommentItem'
 const Watch = () => {
   const [isExpanded, setIsExpanded] = useState(false)
   const [showComments, setShowComments] = useState(false)
   const[showDummy,setShowDummy]=useState(false)
+  const[showLiveChat,setShowLiveChat]=useState(false)
   const [searchParams] = useSearchParams()
   const dispach = useDispatch()
   const query = searchParams.get('v')
@@ -115,11 +118,17 @@ const Watch = () => {
               </button>
 
               <button className='bg-gray-100 px-3 py-2' onClick={()=>setShowDummy(!showDummy)}>Dummy Comments</button>
+              <button className='bg-gray-100 px-3 py-2' onClick={()=>setShowLiveChat(!showLiveChat)}>Live Chat</button>
             </div>
 
             <div className='px-3 pb-4 sm:px-0 ' >
               {showComments && comments.map(comment => <Comment key={comment.id} info={comment} />)}
-              {showDummy && <CommentContainer/>}
+              {showDummy &&(
+                <div>
+                  {Dummy_Comments.map(c=><CommentItem comment={c} />)}
+                </div>
+              ) }
+              {showLiveChat && <LiveChat/>}
             </div>
 
           </div>

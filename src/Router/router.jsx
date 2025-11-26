@@ -2,23 +2,28 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Main from "../Components/Main"
 import Watch from "../Components/Watch";
-const router=createBrowserRouter([
+import LiveScrore from "../Components/LiveScrore";
+const router = createBrowserRouter([
     {
-        path:"/",
-        element:<App/>,
-        children:[
+        path: "/",
+        element: <App />,
+        children: [
             {
-                index:true,
-                element:<Main/>
+                index: true,
+                element: <Main />
             },
-            
-        ]  
+
+        ]
     }
     ,
     {
-                path:'/watch',
-                element:<Watch/>
-            }
+        path: '/watch',
+        element: <Watch />
+    },
+     {
+        path: '/Live',
+        element: <LiveScrore />
+    }
 ])
 
 export default router
