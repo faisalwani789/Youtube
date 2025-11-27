@@ -6,8 +6,9 @@ const useGetComments = (id) => {
 
     useEffect(() => {
         const getComments = async () => {
-            const res = await fetch(`${Youtube_comments}${id}&key=${import.meta.env.VITE_YOUTUBE_API}`)
+            const res = await fetch(`https://netmaxgptbkd-1.onrender.com/api/youtube/comments?videoId=${id}`)
             const comments = await res.json()
+        
             setComments(comments.items)
          
             

@@ -20,7 +20,7 @@ const LiveChat = () => {
       //pooling
       dispatch(addMessage(getRandomMessage()))
     }
-    const interval=setInterval(pooling,10000)
+    const interval=setInterval(pooling,5000)
     return ()=>clearInterval(interval)
   })
   return (

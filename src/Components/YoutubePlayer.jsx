@@ -21,27 +21,20 @@ const YoutubePlayer = ({ videoId }) => {
   };
 
   const onReady = (event) => {
+    // console.log('YouTube player is ready', event.target);
     setPlayer(event.target);
   };
 
-  const onError = (error) => {
-    console.error('YouTube Player Error:', error);
-    // Fallback if iframe fails to load
-    if (error.data === 150) {
-      // console.log('Embedding restricted, trying alternative approach');
-    }
-  };
+  
+
 
   return (
 
     <Youtube
       key={videoId} // Key prop forces re-render when videoId changes
       videoId={videoId}
-
       opts={opts}
       onReady={onReady}
-      onError={onError}
-      onStateChange={onStateChange}
       style={{width:'100%',height:'100%',borderRadius:'16px'}}
     />
   )    
