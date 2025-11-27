@@ -19,11 +19,8 @@ const router = createBrowserRouter([
     {
         path: '/watch',
         element: <Watch />
-    },
-     {
-        path: '/Live',
-        element: <LiveScrore />
     }
+   
 ])
 
 export default router
