@@ -11,7 +11,7 @@ const useGetSearchResults = (searchQuery) => {
             const res = await fetch(`${Youtube_Search}${searchQuery}&key=${import.meta.env.VITE_YOUTUBE_API}`)
             const data = await res.json()
             setSearchResults(data.items)
-            console.log(data)
+            
             
         }
         getSearchResults()

@@ -13,7 +13,7 @@ const useGetSuggestions = (searchQuery) => {
     const autoSuggestions=async()=>{
         const res= await fetch(`${AutoSuggest}${searchQuery}`)
           const json=await res.json()
-          console.log(json)
+   
           if(json.length==0)return
           setSuggestions(json) //update suggestions
           dispatch(addSearchCache({ //update the cache

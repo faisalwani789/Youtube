@@ -17,7 +17,7 @@ const LiveChat = () => {
   },[messages])
   useEffect(()=>{
     const pooling=()=>{
-      console.log("pool")
+      //pooling
       dispatch(addMessage(getRandomMessage()))
     }
     const interval=setInterval(pooling,10000)

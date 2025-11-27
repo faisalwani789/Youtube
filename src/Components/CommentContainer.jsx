@@ -15,7 +15,7 @@ const DummyComment = ({ data }) => {
   )
 }
 const CommentList = ({ commentList }) => {
-  console.log(commentList)
+
   return commentList?.map(comment => (
     <div className=' '>
       <DummyComment  data={comment} />

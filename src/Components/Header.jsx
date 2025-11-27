@@ -16,14 +16,12 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const { suggestions } = useGetSuggestions(searchQuery)
   const [showSuggestions, setShowSuggestions] = useState(false)
-  console.log(suggestions)
+
   const dispatch = useDispatch()
   
   const handleSearch = async () => {
-     console.log('clicked')
     const res = await fetch(`${Youtube_Search}${searchQuery}&key=${import.meta.env.VITE_YOUTUBE_API}`)
     const data = await res.json()
-    console.log(data)
     dispatch(addVideos(data.items))
     // setSearchResults(data.items)
 
@@ -37,9 +35,7 @@ const Header = () => {
       dispatch(setAbsSidebar())
 
     }
-    else {
-      console.log('show icons icons')
-    }
+   
   }
 
   return (
@@ -54,7 +50,7 @@ const Header = () => {
       </div>
 
       <div className='flex px-0 col-span-6 md:col-span-6 md:px-6 sm:px-2 sm:col-span-4  justify-center items-center'>
-        <input className=' outline-1 rounded-l-4xl w-full px-4 py-1.5' type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} onFocus={() => {setShowSuggestions(true);console.log("focus")}} onBlur={() => {setShowSuggestions(false);console.log('blur')}} />
+        <input className=' outline-1 rounded-l-4xl w-full px-4 py-1.5' type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} onFocus={() => {setShowSuggestions(true)}} onBlur={() => {setShowSuggestions(false)}} />
         <FontAwesomeIcon icon={faSearch} className='border-1 rounded-r-full text-xl px-3 py-2 mr-3 hover:bg-gray-100' onClick={handleSearch}/>
         
         {showSuggestions && (

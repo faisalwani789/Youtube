@@ -9,7 +9,7 @@ const useGetComments = (id) => {
             const res = await fetch(`${Youtube_comments}${id}&key=${import.meta.env.VITE_YOUTUBE_API}`)
             const comments = await res.json()
             setComments(comments.items)
-            console.log(comments)
+         
             
         }
         getComments()

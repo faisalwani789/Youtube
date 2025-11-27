@@ -21,7 +21,6 @@ const YoutubePlayer = ({ videoId }) => {
   };
 
   const onReady = (event) => {
-    // console.log('YouTube player is ready', event.target);
     setPlayer(event.target);
   };
 
@@ -29,15 +28,9 @@ const YoutubePlayer = ({ videoId }) => {
     console.error('YouTube Player Error:', error);
     // Fallback if iframe fails to load
     if (error.data === 150) {
-      console.log('Embedding restricted, trying alternative approach');
+      // console.log('Embedding restricted, trying alternative approach');
     }
   };
-
-  const onStateChange = (event) => {
-  //   console.log('Player state changed:', event.data);
-  };
-
-
 
   return (
 

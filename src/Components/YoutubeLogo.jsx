@@ -10,9 +10,6 @@ const YoutubeLogo = () => {
         if (window.location.pathname == '/watch') {
             dispatch(setAbsSidebar())
         }
-        else {
-            console.log('show icons icons')
-        }
     }
 
         return (

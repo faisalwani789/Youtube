@@ -30,15 +30,15 @@ const Watch = () => {
   const dispach = useDispatch()
   const query = searchParams.get('v')
   const { comments } = useGetComments(query)
-  // console.log(comments)
+ 
   useGetVideoDetail(query)
 
   const popularVideos = useSelector(store => store?.popular)
-  // console.log(popularVideos+'from watch page')
+  
   const { videoInfo } = useSelector(store => store.video)
-  // console.log(JSON.stringify(videoInfo,null,2))
+  
   const { channelInfo } = useGetChannelInfo(videoInfo?.snippet?.channelId)
-  console.log(channelInfo)
+  
   const { short, full } = useBeautifulDescription(videoInfo?.snippet?.description)
   useEffect(() => {
     const handleResize = () => {

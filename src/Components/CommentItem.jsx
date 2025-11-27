@@ -1,7 +1,6 @@
 import React from 'react'
 
 const CommentItem = ({ comment }) => {
-    console.log(comment)
     return (
         <div className="flex flex-col">
             {/* --- Main Comment Content --- */}

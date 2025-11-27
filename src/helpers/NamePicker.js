@@ -209,4 +209,3 @@ export const getRandomMessage=()=>{
     return randomNames[name]+" "+ randomMessages[message]
     
 }
-console.log(getRandomMessage())
